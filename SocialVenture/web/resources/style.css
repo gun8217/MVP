@@ -1,0 +1,309 @@
+/* ---------------------------------------------------------
+   1. 변수 및 초기화 (Variables & Reset)
+   --------------------------------------------------------- */
+:root {
+  --bg: #f9faff;
+  --card: #fff;
+  --text: #1a1d29;
+  --muted: #4b5563; /* 가독성을 위해 기존보다 약간 더 진하게 조정 */
+  --accent: #1e293b;
+  --accent-soft: #4f46e5; /* 브랜드 컬러를 좀 더 선명하게 변경 */
+  --border: #e2e8f0;
+  --shadow: rgba(0, 0, 0, 0.06);
+  --max-width: 1000px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Pretendard", "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* ---------------------------------------------------------
+   2. 레이아웃 시스템 (Layout)
+   --------------------------------------------------------- */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+header {
+  padding: 80px 0 60px;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+  background: linear-gradient(180deg, #ffffff 0%, #f3f6ff 100%);
+}
+
+section {
+  padding: 80px 0;
+}
+
+/* 섹션별 배경 교차 적용으로 구분감 부여 */
+section:nth-of-type(even) {
+  background-color: #ffffff;
+}
+
+/* ---------------------------------------------------------
+   3. 타이포그래피 (Typography)
+   --------------------------------------------------------- */
+h1 {
+  font-size: clamp(2rem, 5vw, 2.5rem); /* 반응형 폰트 크기 */
+  margin: 16px 0;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 1.75rem;
+  margin-bottom: 24px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 700px; /* 읽기 편한 문장 길이 제한 */
+}
+
+header p {
+  margin: 0 auto 30px;
+}
+
+/* ---------------------------------------------------------
+   4. 컴포넌트 (Components)
+   --------------------------------------------------------- */
+
+/* 배지 */
+.badge {
+  display: inline-block;
+  padding: 4px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent-soft);
+  background: #eef2ff;
+  border: 1px solid #e0e7ff;
+  border-radius: 999px;
+}
+
+/* 그리드 및 카드 */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin: 40px 0;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 4px 6px -1px var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  border-color: var(--accent-soft);
+}
+
+.card h3 {
+  margin: 0 0 12px;
+  font-size: 18px;
+  color: var(--accent);
+}
+
+/* 리스트 스타일 커스텀 (MVP 범위 섹션용) */
+ul {
+  padding: 0;
+  list-style: none;
+  margin: 24px 0;
+}
+
+ul li {
+  padding-left: 28px;
+  position: relative;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+ul li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--accent-soft);
+  font-weight: bold;
+}
+
+/* ---------------------------------------------------------
+   5. 버튼 및 인터랙션 (Buttons)
+   --------------------------------------------------------- */
+.cta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* 고정 내비게이션 스타일 (JS와 연동) */
+.cta.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: auto;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+}
+
+.btn:hover {
+  background: #f8fafc;
+  border-color: var(--accent-soft);
+  color: var(--accent-soft);
+}
+
+.btn.repo {
+  background: #000;
+  border-color: #000;
+  color: #fff;
+}
+
+.btn.repo:hover {
+  background: #222;
+  border-color: #222;
+}
+
+.btn.active {
+  background: var(--accent-soft);
+  color: #fff;
+  border-color: var(--accent-soft);
+}
+
+/* ---------------------------------------------------------
+   6. 푸터 (Footer)
+   --------------------------------------------------------- */
+footer {
+  padding: 60px 0;
+  background: #f1f5f9;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 14px;
+  text-align: center;
+}
+
+footer p {
+  margin: 0 auto;
+  opacity: 0.8;
+}
+
+/* ---------------------------------------------------------
+   7. 컨텐츠
+   --------------------------------------------------------- */
+section > p {
+  max-width: 952px;
+  margin: 40px auto 0;
+  padding: 30px 24px;
+  background: #ffffff;
+  border-radius: 12px;
+  border-left: 5px solid var(--accent-soft);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text);
+  word-break: keep-all;
+  position: relative;
+}
+
+#overview > p {
+  background: linear-gradient(to right, #ffffff, #f0f4ff);
+  text-align: left;
+}
+
+#overview > p::before {
+  content: "💡 사회적 가치";
+  display: block;
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: var(--accent-soft);
+  margin-bottom: 10px;
+}
+
+#mvp > p:last-of-type {
+  background: linear-gradient(to right, #ffffff, #f0fdfa);
+  border-left-color: #2bb0a6;
+  text-align: left;
+}
+
+#mvp > p:last-of-type::before {
+  content: "🚀 향후 계획";
+  display: block;
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #2bb0a6;
+  margin-bottom: 10px;
+}
+
+#mvp > p:not(:last-of-type) {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  font-size: 0.95rem;
+  color: var(--muted);
+  padding: 10px 0;
+  margin-top: 10px;
+  text-align: left;
+  font-style: italic;
+}
+
+/* ---------------------------------------------------------
+   8. 미디어 쿼리 (Responsive)
+   --------------------------------------------------------- */
+@media (max-width: 640px) {
+  section {
+    padding: 60px 0;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
