@@ -150,6 +150,40 @@
 
 ---
 
+## 9. Social Impact
+
+- 정책 실패로 인한 사회적 혼란 예방
+- 범죄 악용 가능성 사전 차단
+- 시민 안전 및 사회적 신뢰 강화
+
+---
+
+## 10. Market & Stakeholders
+
+- 국회 입법조사처
+- 지자체 정책연구원
+- 시민단체·학계
+- 국제기구(OECD, UN)
+
+---
+
+## 11. Business Model
+
+- Phase 1: 컨설팅 리포트
+- Phase 2: SaaS 플랫폼
+- Phase 3: 국제 확장
+
+---
+
+## 12. Roadmap
+
+- MVP (2025)
+- Pilot (2026)
+- SaaS Launch (2027)
+- Global Expansion (2028 이후)
+
+---
+
 ## Disclaimer
 
 This repository represents an **MVP-phase experimental framework.**
